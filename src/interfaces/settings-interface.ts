@@ -54,6 +54,8 @@ export interface FileData {
 	comment: boolean
 	add_context: boolean
 	add_obs_tags: boolean
+
+	markdown_format: boolean
 }
 
 export interface ParsedSettings extends FileData {

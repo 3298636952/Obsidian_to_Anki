@@ -14,6 +14,10 @@ const defaultDescs = {
 	"Add Obsidian Tags": "Interpret #tags in the fields of a note as Anki tags, removing them from the note text in Anki."
 }
 
+const myDefaultDescs = {
+	"Markdown Formatting": "填充Note字段时, 自动将Markdown转化为HTML。"
+}
+
 export const DEFAULT_IGNORED_FILE_GLOBS = [
 	'**/*.excalidraw.md'
 ];
@@ -249,6 +253,46 @@ export class SettingsTab extends PluginSettingTab {
 		}
 	}
 
+	setup_my_defaults() {
+		let {containerEl} = this;
+		const plugin = (this as any).plugin
+		let my_defaults_settings = containerEl.createEl('h3', {text: 'My Defaults'})
+
+		if (!(plugin.settings.hasOwnProperty("MY_DEFAULTS"))) {
+			plugin.settings.MY_DEFAULTS = {}
+		}
+
+        if (!(plugin.settings["MY_DEFAULTS"].hasOwnProperty("Markdown Formatting"))) {
+            plugin.settings["MY_DEFAULTS"]["Markdown Formatting"] = false
+        }
+
+		for (let key of Object.keys(plugin.settings["MY_DEFAULTS"])) {
+			if (typeof plugin.settings["MY_DEFAULTS"][key] === "string") {
+				new Setting(my_defaults_settings)
+					.setName(key)
+					.setDesc(myDefaultDescs[key])
+					.addText(
+						text => text.setValue(plugin.settings["MY_DEFAULTS"][key])
+							.onChange((value) => {
+								plugin.settings["MY_DEFAULTS"][key] = value
+								plugin.saveAllData()
+							})
+					)
+			} else if (typeof plugin.settings["MY_DEFAULTS"][key] === "boolean") {
+				new Setting(my_defaults_settings)
+					.setName(key)
+					.setDesc(myDefaultDescs[key])
+					.addToggle(
+						toggle => toggle.setValue(plugin.settings["MY_DEFAULTS"][key])
+							.onChange((value) => {
+								plugin.settings["MY_DEFAULTS"][key] = value
+								plugin.saveAllData()
+							})
+					)
+			}
+		}
+	}
+
 	get_folders(): TFolder[] {
 		const app = (this as any).plugin.app
 		let folder_list: TFolder[] = [app.vault.getRoot()]
@@ -441,6 +485,7 @@ export class SettingsTab extends PluginSettingTab {
 		this.setup_folder_table()
 		this.setup_syntax()
 		this.setup_defaults()
+		this.setup_my_defaults()
 		this.setup_buttons()
 		this.setup_ignore_files()
 	}

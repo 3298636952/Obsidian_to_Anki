@@ -1,0 +1,108 @@
+{
+  "settings": {
+    "CUSTOM_REGEXPS": {
+      "Basic": "^Q: ((?:.+\\n)*)\\n*A: (.+(?:\\n(?:^.{1,3}$|^.{4}(?<!<!--).*))*)",
+      "Basic (and reversed card)": "",
+      "Basic (optional reversed card)": "",
+      "Basic (type in the answer)": "",
+      "Cloze": "",
+      "Image Occlusion": "",
+      "my-basic-markdown": "^> \\[!my-flashcard-question] Question *(?:\\n^> ?)*##### ((?:.+\\n)+)^> _{3,}\\n((?:^>.*(?:\\n|$))+)",
+      "my-bubeidanci": "",
+      "my-cloze-markdown": "^> \\[!my-flashcard-cloze] Cloze *(?:\\n^> ?)*##### ((?:.+(?<!^> _{3,})(?:\\n|$))+)(?:^> _{3,}\\n((?:^>.*(?:\\n|$))+))?"
+    },
+    "FILE_LINK_FIELDS": {
+      "Basic": "Front",
+      "Basic (and reversed card)": "Front",
+      "Basic (optional reversed card)": "Front",
+      "Basic (type in the answer)": "Front",
+      "Cloze": "Text",
+      "Image Occlusion": "Occlusion",
+      "my-basic-markdown": "Front",
+      "my-bubeidanci": "word"
+    },
+    "CONTEXT_FIELDS": {},
+    "FOLDER_DECKS": {
+      "Folder1": ""
+    },
+    "FOLDER_TAGS": {
+      "Folder1": ""
+    },
+    "Syntax": {
+      "Begin Note": "START",
+      "End Note": "END",
+      "Begin Inline Note": "STARTI",
+      "End Inline Note": "ENDI",
+      "Target Deck Line": "TARGET DECK",
+      "File Tags Line": "FILE TAGS",
+      "Delete Note Line": "DELETE",
+      "Frozen Fields Line": "FROZEN"
+    },
+    "Defaults": {
+      "Scan Directory": "",
+      "Tag": "Obsidian_to_Anki",
+      "Deck": "Default",
+      "Scheduling Interval": 0,
+      "Add File Link": false,
+      "Add Context": false,
+      "CurlyCloze": true,
+      "CurlyCloze - Highlights to Clozes": true,
+      "ID Comments": true,
+      "Add Obsidian Tags": false
+    },
+    "IGNORED_FILE_GLOBS": [
+      "**/*.excalidraw.md"
+    ],
+    "MY_DEFAULTS": {
+      "Markdown Formatting": false
+    }
+  },
+  "Added Media": [],
+  "File Hashes": {
+    "Folder1/Welcome.md": "08d6d0e19a48b25ec9405c05c0fe9f6b",
+    "Folder1/三种主要句子类型.md": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "fields_dict": {
+    "Basic": [
+      "Front",
+      "Back"
+    ],
+    "Basic (and reversed card)": [
+      "Front",
+      "Back"
+    ],
+    "Basic (optional reversed card)": [
+      "Front",
+      "Back",
+      "Add Reverse"
+    ],
+    "Basic (type in the answer)": [
+      "Front",
+      "Back"
+    ],
+    "Cloze": [
+      "Text",
+      "Back Extra"
+    ],
+    "Image Occlusion": [
+      "Occlusion",
+      "Image",
+      "Header",
+      "Back Extra",
+      "Comments"
+    ],
+    "my-basic-markdown": [
+      "Front",
+      "Back"
+    ],
+    "my-bubeidanci": [
+      "word",
+      "senseid",
+      "sentenceid"
+    ],
+    "my-cloze-markdown": [
+      "Text",
+      "Back Extra"
+    ]
+  }
+}
